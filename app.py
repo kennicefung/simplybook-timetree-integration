@@ -8,7 +8,6 @@ import json
 from datetime import datetime
 
 def handler(event, context):
-    # TODO implement
     booking_id = json.loads(event['body'])['booking_id']
     booking_hash = json.loads(event['body'])['booking_hash']
     company = json.loads(event['body'])['company']
@@ -58,7 +57,6 @@ def handler(event, context):
             firestore_client.record_timetree_id(booking_id,timetree_id)
 
         #else:
-        #     # create timetree event
         #    timestamp = datetime.strptime(booking['result']['start_date_time'], '%Y-%m-%d %H:%M:%S').strftime('%Y%m%d%H%M')
         #    timetree_id = firestore_client.get_timetree_id(f'gc{event_id}-{timestamp}')
         #    timetree_client.create_comment(client_name, client_email, client_phone)
@@ -93,34 +91,3 @@ def handler(event, context):
         #'body': json.dumps(booking_id + ' ; ' + booking_hash + ' ; ' + company + ' ; ' + notification_type)
         'body': json.dumps('success')
     }
-
-
-# from flask import Flask
-# from flask import request
-# app = Flask(__name__)
-
-# @app.route('/')
-# def hello():
-#     return 'Hello World!'
-
-# @app.post('/new-booking')
-# def new_booking():
-#     booking_id = request.json['booking_id']
-#     booking_hash = request.json['booking_hash']
-#     company = request.json['company']
-#     notification_type = request.json['notification_type']
-#     timetree_client.create_event()
-
-#     #booking = simplybook_client.get_booking_details(booking_id, booking_hash)
-
-    
-#     # create event in timetree
-
-#     # mark timetree id in firestore
-
-#     # mark excel sheet
-
-#     return booking_id + ' ; ' + booking_hash + ' ; ' + company + ' ; ' + notification_type
-
-# if __name__ == "__main__":
-#     app.run(host='0.0.0.0', port=8080)
